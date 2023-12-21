@@ -1034,13 +1034,13 @@ public class Ob1G5CollectionService extends G5BaseService {
     public void onCreate() {
         super.onCreate();
 
-         try {
+       try {
             registerReceiver(mBondStateReceiver, new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED));
         } catch (Exception e) {
             UserError.Log.e(TAG, "Could not register bond state receiver: " + e);
         }
 
-         final IntentFilter pairingRequestFilter = new IntentFilter(BluetoothDevice.ACTION_PAIRING_REQUEST);
+        final IntentFilter pairingRequestFilter = new IntentFilter(BluetoothDevice.ACTION_PAIRING_REQUEST);
         pairingRequestFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY - 1);
         try {
             if (Build.VERSION.SDK_INT < 26) {
@@ -1051,17 +1051,20 @@ public class Ob1G5CollectionService extends G5BaseService {
         } catch (Exception e) {
             UserError.Log.e(TAG, "Could not register pairing request receiver:" + e);
         }
-            checkAlwaysScanModels();
+
+        checkAlwaysScanModels();
 
         android_wear = JoH.areWeRunningOnAndroidWear();
         if (android_wear) {
             UserError.Log.d(TAG, "We are running on Android Wear");
             wear_broadcast = Pref.getBooleanDefaultFalse("ob1_wear_broadcast");
+        }
+            
         if (d) RxBleClient.setLogLevel(RxBleLog.DEBUG);
         addErrorHandler(TAG);
         listenForChangeInSettings(true);
 
-    }
+    
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
