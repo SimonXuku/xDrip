@@ -1588,8 +1588,7 @@ public class JoH {
     }
 
     public static boolean areWeRunningOnAndroidWear() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH
-                && xdrip.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH);
+        return xdrip.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH);
     }
 
     public static boolean isAirplaneModeEnabled(Context context) {
