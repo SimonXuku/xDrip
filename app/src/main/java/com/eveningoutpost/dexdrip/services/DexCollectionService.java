@@ -817,7 +817,6 @@ public class DexCollectionService extends Service implements BtCallBack {
 
     @SuppressLint("ObsoleteSdkInt")
     private boolean shouldServiceRun() {
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) return false;
         final boolean result = (DexCollectionType.hasXbridgeWixel() || DexCollectionType.hasBtWixel())
                 && ((!Home.get_forced_wear() && !JoH.areWeRunningOnAndroidWear())
                 || PersistentStore.getBoolean(CollectionServiceStarter.pref_run_wear_collector));
